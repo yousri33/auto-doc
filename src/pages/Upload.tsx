@@ -362,11 +362,49 @@ export function Upload({ vehicles, setVehicles, setPage }: UploadProps) {
                     key={doc.id}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98, cursor: 'grabbing' }}
-                    className="relative group cursor-grab overflow-hidden rounded-xl border border-primary/10 shadow-sm aspect-[4/3] bg-white transition-all hover:shadow-md"
+                    className="relative group cursor-pointer overflow-hidden rounded-xl border border-primary/10 shadow-sm aspect-[4/3] bg-white transition-all hover:shadow-md"
                     draggable
                     onDragStart={(e: any) => {
                       e.dataTransfer.setData('text/plain', window.location.origin + doc.src);
                       e.dataTransfer.effectAllowed = 'copyMove';
+                    }}
+                    onClick={async (e) => {
+                      // Glide animation logic
+                      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                      const target = document.querySelector('[onDrop]')?.getBoundingClientRect();
+                      
+                      if (target) {
+                        const flyDoc = document.createElement('div');
+                        flyDoc.style.position = 'fixed';
+                        flyDoc.style.left = `${rect.left}px`;
+                        flyDoc.style.top = `${rect.top}px`;
+                        flyDoc.style.width = `${rect.width}px`;
+                        flyDoc.style.height = `${rect.height}px`;
+                        flyDoc.style.backgroundImage = `url(${doc.src})`;
+                        flyDoc.style.backgroundSize = 'cover';
+                        flyDoc.style.borderRadius = '16px';
+                        flyDoc.style.zIndex = '9999';
+                        flyDoc.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                        flyDoc.style.pointerEvents = 'none';
+                        flyDoc.style.boxShadow = '0 20px 50px rgba(0,0,0,0.2)';
+                        document.body.appendChild(flyDoc);
+
+                        requestAnimationFrame(() => {
+                          flyDoc.style.left = `${target.left + target.width / 2 - rect.width / 4}px`;
+                          flyDoc.style.top = `${target.top + target.height / 2 - rect.height / 4}px`;
+                          flyDoc.style.width = `${rect.width / 2}px`;
+                          flyDoc.style.height = `${rect.height / 2}px`;
+                          flyDoc.style.opacity = '0';
+                          flyDoc.style.transform = 'scale(0.5) rotate(5deg)';
+                        });
+
+                        setTimeout(() => flyDoc.remove(), 800);
+                      }
+
+                      const resp = await fetch(doc.src);
+                      const blob = await resp.blob();
+                      const f = new File([blob], `demo-${doc.id}.png`, { type: 'image/png' });
+                      handleFile(f);
                     }}
                   >
                     <img src={doc.src} alt={doc.label} className="w-full h-full object-cover object-top" />
