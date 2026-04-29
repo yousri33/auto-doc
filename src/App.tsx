@@ -82,7 +82,7 @@ export default function App() {
         </div>
 
         {/* Footer — fixed, never scrolls */}
-        <footer className="px-5 py-2 border-t border-border text-[11px] text-muted-foreground flex justify-between items-center bg-card shrink-0">
+        <footer className="hidden md:flex px-5 py-2 border-t border-border text-[11px] text-muted-foreground justify-between items-center bg-card shrink-0">
           <span>© 2026 <strong className="text-foreground">Autodoc DZ</strong></span>
           <span>Hadji Khaoula · Amrane Leticia · Dev: Amrane Yousri</span>
         </footer>
