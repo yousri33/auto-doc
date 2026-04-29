@@ -21,8 +21,10 @@ export interface Vehicle {
 export type Page = 'dashboard' | 'vehicles' | 'vehicle-detail' | 'reports' | 'upload'
 
 export interface OcrResult {
-  documentType: string
-  expiryDate: string
+  documentType: 'Assurance' | 'Carte Grise' | 'Contrôle Technique' | 'Vignette' | 'Autre'
   plate: string
+  expiryDate: string
   confidence: number
+  marque?: string
+  chassis?: string
 }

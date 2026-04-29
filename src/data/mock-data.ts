@@ -5,7 +5,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v1',
     name: 'Peugeot Partner',
-    plate: '16 234-A-06',
+    plate: '018197-125-16',
     type: 'Van',
     year: 2020,
     color: '#4a90d9',
@@ -19,7 +19,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v2',
     name: 'Renault Kangoo',
-    plate: '16 891-B-06',
+    plate: '008234-119-16',
     type: 'Van',
     year: 2019,
     color: '#e8854a',
@@ -33,7 +33,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v3',
     name: 'Toyota Hilux',
-    plate: '09 102-C-06',
+    plate: '112345-321-16',
     type: 'Truck',
     year: 2021,
     color: '#5cb85c',
@@ -47,7 +47,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v4',
     name: 'Mercedes Sprinter',
-    plate: '31 445-D-06',
+    plate: '005543-118-31',
     type: 'Heavy Van',
     year: 2018,
     color: '#9b59b6',
@@ -61,9 +61,11 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v5',
     name: 'Volkswagen Crafter',
-    plate: '02 443-H-06',
+    plate: '012233-122-02',
     type: 'Heavy Van',
     year: 2022,
+    color: '#3498db',
+    logo: '/volkswagen.png',
     documents: [
       { id: 'd13', type: 'Assurance', expiryDate: daysFromNow(280), uploadedAt: '2025-03-01' },
       { id: 'd14', type: 'Carte Grise', expiryDate: daysFromNow(600), uploadedAt: '2025-03-01' },
@@ -73,7 +75,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v6',
     name: 'Mitsubishi L200',
-    plate: '13 554-F-06',
+    plate: '099887-321-13',
     type: 'Truck',
     year: 2021,
     color: '#34495e',
@@ -85,7 +87,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v7',
     name: 'Iveco Daily',
-    plate: '35 991-G-06',
+    plate: '003344-117-35',
     type: 'Heavy Van',
     year: 2017,
     color: '#f1c40f',
@@ -97,7 +99,7 @@ export const MOCK_VEHICLES: Vehicle[] = [
   {
     id: 'v8',
     name: 'Volkswagen Crafter',
-    plate: '02 443-H-06',
+    plate: '012233-122-02',
     type: 'Heavy Van',
     year: 2020,
     color: '#2980b9',
@@ -113,7 +115,7 @@ export const WEBHOOK_URL = 'https://n8n.srv1231456.hstgr.cloud/webhook/auto-doc'
 export async function extractDocumentData(_file: File): Promise<OcrResult> {
   await new Promise(r => setTimeout(r, 1800))
   const mocks: OcrResult[] = [
-    { documentType: 'Assurance', expiryDate: daysFromNow(180), plate: '16 234-A-06', confidence: 91 },
+    { documentType: 'Assurance', expiryDate: daysFromNow(180), plate: '018197-125-16', confidence: 91 },
     { documentType: 'Contrôle Technique', expiryDate: daysFromNow(42), plate: '31 445-D-06', confidence: 87 },
     { documentType: 'Carte Grise', expiryDate: daysFromNow(365), plate: '09 102-C-06', confidence: 94 },
   ]
