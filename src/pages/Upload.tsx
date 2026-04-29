@@ -224,7 +224,7 @@ export function Upload({ vehicles, setVehicles, setPage }: UploadProps) {
                 <div>
                   <p className="font-semibold text-[13px] mb-1">Google Gemini AI</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Extraction intelligente par <strong>Gemini 2.0 Flash</strong>. 
+                    Extraction intelligente par <strong>Gemini 2.5 Flash</strong>. 
                   </p>
                 </div>
               </CardContent>

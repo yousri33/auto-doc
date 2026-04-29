@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI((import.meta as any).env.VITE_GEMINI_API_KEY || "");
 
-export async function performOcrAttempt(file: File, modelName = "gemini-2.0-flash") {
+export async function performOcrAttempt(file: File, modelName = "gemini-2.5-flash") {
   const model = genAI.getGenerativeModel({ model: modelName });
 
   const base64Data = await new Promise<string>((resolve, reject) => {
